@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Car Rental Form</title>
+  </head>
+  <body class="bg-gray-100 min-h-screen pt-5">
+    <div
+      class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md flex-row items-center mx-auto justify-center"
+    >
+      <h2 class="text-2xl font-bold mb-4">Car Rental Form</h2>
+      <form id="registration-form" class="space-y-2">
+        <label class="font-semibold">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Full Name"
+          class="w-full p-2 border rounded"
+        />
+        <p id="fullnameError" class="text-red-500 text-xs hidden py-2">
+          must contain at least 3 characters and must be 2 words.
+        </p>
+        <label class="font-semibold"> Email </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          class="w-full p-2 border rounded"
+        />
+        <p id="emailError" class="text-red-500 text-xs hidden py-2">
+          must contain '@' and '.'
+        </p>
+        <label class="font-semibold">Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="+216 XXXXXXXX"
+          maxlength="13"
+          class="w-full p-2 border rounded"
+        />
+        <p id="phoneError" class="text-red-500 text-xs hidden py-2">
+          8 digits, numbers only
+        </p>
+        <label class="font-semibold"> Car Type </label>
+        <select id="carType" class="w-full p-2 border rounded">
+          <!-- onchange="calculateCost()"-->
+          <option value="none">choose one ..</option>
+          <option value="50">Economy - $50/day</option>
+          <option value="70">Standard - $70/day</option>
+          <option value="100">Luxury - $100/day</option>
+        </select>
+        <p id="carTypeError" class="text-red-500 text-xs hidden py-2">
+          must be selected.
+        </p>
+        <label class="font-semibold"> Start Date </label>
+        <input type="date" id="startDate" class="w-full p-2 border rounded" />
+        <!--Ajouter d'un attribut pattern="[A-Za-z0-9]{3}""-->
+        <!-- onchange="calculateCost()"-->
+        <label class="font-semibold"> End Date </label>
+        <input type="date" id="endDate" class="w-full p-2 border rounded" />
+        <p id="dateError" class="text-red-500 text-xs hidden py-2">
+          must the End Date > Start Date
+        </p>
+        <!-- onchange="calculateCost()"-->
+        <p class="font-bold">Total Cost: $<span id="totalCost">0</span></p>
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">
+          <!--  onclick="submitForm()"-->
+          Submit
+        </button>
+      </form>
+      <p id="success-message" class="text-green-500 text-center mt-4 hidden">
+        Registration Successful!
+      </p>
+    </div>
+
+    <div class="flex-col max-w-3xl mx-auto mt-8">
+      <h2 class="text-2xl font-bold mb-4">Reservations</h2>
+      <table class="w-full bg-white rounded-lg shadow-lg">
+        <thead>
+          <tr class="bg-white border border-x-2">
+            <th class="p-2">Full Name</th>
+            <th class="p-2">Email</th>
+            <th class="p-2">Phone</th>
+            <th class="p-2">Car Type</th>
+            <th class="p-2">Start Date</th>
+            <th class="p-2">End Date</th>
+            <th class="p-2">Total Cost</th>
+            <th class="p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reservations"></tbody>
+      </table>
+    </div>
+    <script src="carReservation.js"></script>
+  </body>
+</html>
