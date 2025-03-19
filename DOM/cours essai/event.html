@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="" />
+    <meta name="viewport" content="width=, initial-scale=" />
+    <title></title>
+  </head>
+
+  <body>
+    <div class="d-flex h-100">
+      <p>try pressing some keys:</p>
+      <p id="log"></p>
+    </div>
+    <input id="textBox" type="text" />
+    <div id="output"></div>
+    <script>
+      document.addEventListener("keydown", logKey);
+      //const log = document.getElementById("log");
+      function logKey(event) {
+        //Event objects
+        log.textContent += " " + event.code; //.code : the type of button that your press when yu code with keybord
+      }
+      const textBox = document.querySelector("#textBox");
+      const output = document.querySelector("#output");
+      textBox.addEventListener("keydown", (event) => {
+        // keydown ou keyup
+        output.textContent = `You pressed "${event.key}".`; // event.key : what you doing now // .keylike presskey
+      });
+    </script>
+  </body>
+</html>

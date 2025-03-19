@@ -1,0 +1,163 @@
+const user = {
+  name: "Alice",
+  age: 25,
+  email: "alice@example.com"
+};
+undefined
+user
+{name: 'Alice', age: 25, email: 'alice@example.com'}
+const userJSON = JSON.stringify(user);
+undefined
+userJSON
+'{"name":"Alice","age":25,"email":"alice@example.com"}'
+localStorage.setItem("user", userJSON);
+undefined
+console.log(localStorage.getItem("user"));
+VM213:1 {"name":"Alice","age":25,"email":"alice@example.com"}
+undefined
+const storedUserJSON = localStorage.getItem("user");
+
+undefined
+storedUserJSON
+'{"name":"Alice","age":25,"email":"alice@example.com"}'
+const storedUser = JSON.parse(storedUserJSON);
+
+undefined
+store
+VM258:1 Uncaught ReferenceError: store is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM258:1
+storedUserJSON
+'{"name":"Alice","age":25,"email":"alice@example.com"}'
+user={
+  name: "Zohra",
+  age: 25,
+  email: "tlilizo.1@g.com"
+};
+VM321:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:5
+(anonymous) @ VM321:1
+let user ={
+  name: "Zohra",
+  age: 25,
+  email: "tlilizo.1@g.com"
+};
+VM358:1 Uncaught SyntaxError: Identifier 'user' has already been declared
+let user2=[{
+  name: "Zohra",
+  age: 25,
+  email: "tlilizo.1@g.com"
+},{
+  name: "Alice",
+  age: 25,
+  email: "alice@example.com"
+}];
+undefined
+user2
+(2) [{…}, {…}]0: {name: 'Zohra', age: 25, email: 'tlilizo.1@g.com'}1: {name: 'Alice', age: 25, email: 'alice@example.com'}length: 2[[Prototype]]: Array(0)
+const userJSON = JSON.stringify(user);
+
+undefined
+const userJSON = JSON.stringify(user2);
+
+undefined
+const user2JSON = JSON.stringify(user);
+
+undefined
+localStorage.setItem("user2",user2JSON)
+undefined
+console.lo
+undefined
+console.log(localStorage.setItem("user2",user2JSON))
+VM618:1 undefined
+undefined
+console.log(localStorage.getItem("user2"))
+VM665:1 {"name":"Alice","age":25,"email":"alice@example.com"}
+undefined
+console.log(localStorage.getItem("user2JSON"))
+VM682:1 null
+undefined
+console.log(user2JSON);
+
+VM686:1 {"name":"Alice","age":25,"email":"alice@example.com"}
+undefined
+const user2JSON = JSON.stringify(user2);
+
+undefined
+console.log(user2JSON);
+
+VM693:1 [{"name":"Zohra","age":25,"email":"tlilizo.1@g.com"},{"name":"Alice","age":25,"email":"alice@example.com"}]
+undefined
+localStorage.setItem("users", user2JSON);
+
+undefined
+console.log(localStorage.getItem("users"));
+
+VM701:1 [{"name":"Zohra","age":25,"email":"tlilizo.1@g.com"},{"name":"Alice","age":25,"email":"alice@example.com"}]
+undefined
+const storedUsersJSON = localStorage.getItem("users");
+const storedUsers = JSON.parse(storedUsersJSON);
+undefined
+storedUsers.forEach(user => {
+  console.log(`Nom : ${user.name}, Âge : ${user.age}, Email : ${user.email}`);
+});
+VM709:2 Nom : Zohra, Âge : 25, Email : tlilizo.1@g.com
+VM709:2 Nom : Alice, Âge : 25, Email : alice@example.com
+undefined
+const firstUser = storedUsers[0];
+console.log(firstUser);
+VM713:2 {name: 'Zohra', age: 25, email: 'tlilizo.1@g.com'}
+undefined
+const newUser = { name: "Bob", age: 30, email: "bob@example.com" };
+storedUsers.push(newUser);
+3
+localStorage.setItem("users", JSON.stringify(storedUsers));
+
+undefined
+console.log(JSON.parse(localStorage.getItem("users")));
+
+VM725:1 (3) [{…}, {…}, {…}]
+undefined
+const updatedUsers = storedUsers.filter(user => user.name !== "Alice");
+
+undefined
+localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+undefined
+console.log(JSON.parse(localStorage.getItem("users")));
+
+VM737:1 (2) [{…}, {…}]0: {name: 'Zohra', age: 25, email: 'tlilizo.1@g.com'}1: {name: 'Bob', age: 30, email: 'bob@example.com'}length: 2[[Prototype]]: Array(0)
+undefined
+const indexToUpdate = users.find((user,i)=> user[i] === "Zohra");
+VM775:1 Uncaught ReferenceError: users is not defined
+    at <anonymous>:1:23
+(anonymous) @ VM775:1
+const indexToUpdate = users.findIndex(user => user.name === "Zohra");
+VM786:1 Uncaught ReferenceError: users is not defined
+    at <anonymous>:1:23
+(anonymous) @ VM786:1
+const indexToUpdate = storedUsers.findIndex(user => user.name === "Zohra");
+undefined
+if (indexToUpdate !== -1) {
+  console.log("Utilisateur trouvé. Index :", indexToUpdate);
+} else {
+  console.log("Aucun utilisateur trouvé avec ce nom.");
+}
+VM801:2 Utilisateur trouvé. Index : 0
+undefined
+if (indexToUpdate !== -1) {
+  users[indexToUpdate].age = 26; // Mettez à jour l'âge de Zohra
+  users[indexToUpdate].email = "zohra.newemail@g.com"; // Mettez à jour son email
+}
+VM805:2 Uncaught ReferenceError: users is not defined
+    at <anonymous>:2:3
+(anonymous) @ VM805:2
+if (indexToUpdate !== -1) {
+  storedUsers[indexToUpdate].age = 26; // Mettez à jour l'âge de Zohra
+  storedUsers[indexToUpdate].email = "zohra.newemail@g.com"; // Mettez à jour son email
+}
+'zohra.newemail@g.com'
+localStorage.setItem("users", JSON.stringify(storedUsers));
+console.log("Tableau mis à jour dans localStorage :", JSON.parse(localStorage.getItem("users")));
+VM830:2 Tableau mis à jour dans localStorage : (3) [{…}, {…}, {…}]0: {name: 'Zohra', age: 26, email: 'zohra.newemail@g.com'}1: {name: 'Alice', age: 25, email: 'alice@example.com'}2: {name: 'Bob', age: 30, email: 'bob@example.com'}length: 3[[Prototype]]: Array(0)
+undefined

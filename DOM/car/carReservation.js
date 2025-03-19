@@ -93,6 +93,26 @@ const dateError = document.getElementById("dateError");
 const message = document.getElementById("success-message");
 const totalCost = document.getElementById("totalCost");
 const form = document.getElementById("registration-form");
+let editingRow = null; // Variable pour suivre la ligne en cours d'édition
+
+const isValidDateS = () =>
+  startDate.value !== "" || new Date(startDate.value) >= new Date();
+const isValidDateE = () =>
+  !endDate.value !== "" || new Date(endDate.value) >= new Date(startDate.value);
+const isValidcarte = () => carType.value !== "";
+
+function displaycalcul() {
+  const totalCost1 =
+    (Math.floor(new Date(endDate.value) / (1000 * 60 * 60 * 24)) -
+      Math.floor(new Date(startDate.value) / (1000 * 60 * 60 * 24))) *
+    carType.value;
+  if (isValidcarte() && isValidDateS() && isValidDateE()) {
+    totalCost.textContent = totalCost1 + " TND";
+  } else totalCost.textContent = "0 TND";
+}
+carType.addEventListener("input", displaycalcul);
+startDate.addEventListener("input", displaycalcul);
+endDate.addEventListener("input", displaycalcul);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -173,7 +193,7 @@ form.addEventListener("submit", (e) => {
       (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
     ); // end.getTime() date object bech traj3lek b aymet
     let totalCostCalcul = days * parseInt(carType.value);
-    totalCost.textContent = totalCostCalcul;
+    totalCost.textContent = totalCostCalcul + "TND";
 
     // Tableau insert
     const reservations = document.getElementById("reservations");
@@ -242,21 +262,27 @@ form.addEventListener("submit", (e) => {
       reservations.removeChild(tr);
       //tr.remove(); // Remove the row on delete
     });
+
     btn_edit.addEventListener("click", () => {
       // Fill the form with the data of the clicked row
       fullname.value = td1.textContent;
       email.value = td2.textContent;
       phone.value = td3.textContent;
-      carType.text = carType.textContent;
+      //carType.text = carType.textContent;
+      carType.value = [...carType.options].find(
+        (opt) => opt.text === td4.textContent
+      ).value;
+
       startDate.value = td5.textContent;
       endDate.value = td6.textContent;
-
+      totalCost.textContent = td7.textContent;
       // Change Submit button behavior to Update
       const submitButton = document.querySelector("button[type='submit']");
       submitButton.textContent = "Update";
 
       // Update the row instead of adding a new one
       submitButton.removeEventListener("click", reservations.appendChild(tr)); // Remove the insert event
+      reservations.removeChild(tr); // Remove the row from the table
       submitButton.addEventListener("click", () => {
         td1.textContent = fullname.value;
         td2.textContent = email.value;
@@ -267,7 +293,9 @@ form.addEventListener("submit", (e) => {
         td7.textContent = totalCost.textContent;
 
         // Reset the submit button to its original state
+
         submitButton.textContent = "Submit";
+        reservations.removeChild(tr);
         submitButton.removeEventListener("click", () => {
           td1.textContent = fullname.value;
           td2.textContent = email.value;
@@ -280,6 +308,8 @@ form.addEventListener("submit", (e) => {
         submitButton.addEventListener("click", reservations.appendChild(tr)); // Restore the insert function
       });
     });
+    form.reset();
+    totalCost.textContent = "0 TND";
   }
 });
 

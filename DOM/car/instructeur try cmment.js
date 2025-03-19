@@ -15,3 +15,10 @@
       json.parese: from json to js
 - DOMContentLoaded: pour charger les données dans le local strorage : awel mytcharger html lkol ysir reload lel tableau
 */
+
+// Calculate Total Cost
+const start = new Date(startDate.value);
+const end = new Date(endDate.value);
+console.log(
+  Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24))
+);
