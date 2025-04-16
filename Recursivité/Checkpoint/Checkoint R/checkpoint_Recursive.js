@@ -18,11 +18,23 @@ function TicketPrice(age) {
       return 20;
   }
 }
-//for exemple
-//change the age
-const age = 15;
+//
+//with simple prompt
+/*
+const age = parseInt(prompt("Enter You Age:"));
 const price = TicketPrice(age);
 console.log("Ticket price :", price, "DT");
+*/
+//affiche with html page
+function handleTicketPrice() {
+  const age = parseInt(prompt("Enter your age:"));
+  if (!isNaN(age)) {
+    const price = TicketPrice(age);
+    alert(`Ticket price: ${price} DT `);
+  } else {
+    alert("Please enter a valid number.");
+  }
+}
 
 //2nd Task : Weather Clothing Adviser
 function clothingAdviser(temperature, isRaining) {
@@ -38,7 +50,7 @@ function clothingAdviser(temperature, isRaining) {
     advice = "It's hot! Wear light clothes and stay hydrated.";
   }
 
-  if (isRaining) {
+  if (isRaining === "true") {
     advice += " || And don't forget your umbrella or raincoat!";
   } else {
     advice += " || No Need the umbrella or raincoat !";
@@ -46,10 +58,24 @@ function clothingAdviser(temperature, isRaining) {
 
   return advice;
 }
-const temperature = 25; //change the number
-const isRaining = true; //or change it to : true
+/*
+//exemple in js
+const temperature = parseInt(prompt("Enter the Temperature:")); //change the number
+const isRaining = prompt("Enter true or false"); //or change it to : true
 console.log(clothingAdviser(temperature, isRaining));
+*/
+//affiche with html page
+function handleClothingAdviser() {
+  const temperature = parseInt(prompt("Enter the temperature:"));
+  const isRaining = prompt("Is it raining? (true/false)").toLowerCase();
 
+  if (!isNaN(temperature) && (isRaining === "true" || isRaining === "false")) {
+    const advice = clothingAdviser(temperature, isRaining);
+    alert(`Clothing Advice: ${advice}`);
+  } else {
+    alert("Invalid input. Try again.");
+  }
+}
 ////////////////////////////////////////////////////////////////
 
 //Recursion: ( choose at least 2 tasks from below)
@@ -60,8 +86,21 @@ function fibonacci(n) {
   if (n === 1) return 1;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
+/*
+//exemple with js
 const n = 6;
 console.log("Fibonacci number at position " + n + " is " + fibonacci(n));
+*/
+//affiche with html page
+function handleFibonacci() {
+  const n = parseInt(prompt("Enter Fibonacci position:"));
+  if (!isNaN(n) && n >= 0) {
+    const result = fibonacci(n);
+    alert(`Fibonacci(${n}) = ${result}`);
+  } else {
+    alert("Enter a valid non-negative number.");
+  }
+}
 
 //2nd task : Power Function:
 function power(base, exponent) {
@@ -71,6 +110,20 @@ function power(base, exponent) {
     return base * power(base, exponent - 1);
   }
 }
-const base = 2;
-const exponent = 5;
+/*
+//exemple with js
+const base = parseInt(prompt("Base :"));
+const exponent = parseInt(prompt("Exponent:"));
 console.log(`the Power of ${base} ^ ${exponent} = ${power(base, exponent)}`);
+*/
+//affiche with html page
+function handlePower() {
+  const base = parseInt(prompt("Enter base:"));
+  const exponent = parseInt(prompt("Enter exponent:"));
+  if (!isNaN(base) && !isNaN(exponent)) {
+    const result = power(base, exponent);
+    alert(`${base} ^ ${exponent} = ${result}`);
+  } else {
+    alert("Please enter valid numbers.");
+  }
+}
