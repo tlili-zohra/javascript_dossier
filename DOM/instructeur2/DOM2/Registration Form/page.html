@@ -1,0 +1,116 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold text-center mb-6">User Registration</h1>
+      <form id="registration-form" class="space-y-4">
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="name" class="block font-medium">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <p id="fullnameError" class="text-red-500 text-xs hidden">
+            must contain at least 3 characters
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="block font-medium">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <p id="emailError" class="text-red-500 text-xs hidden">
+            must follow email format!
+          </p>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone" class="block font-medium">Phone Number</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="+216 XXXXXXXX"
+            value="+216 "
+            maxlength="13"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <p id="phoneError" class="text-red-500 text-xs hidden">
+          must follow the format +216XXXXXXXX !
+        </p>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label for="dob" class="block font-medium">Date of Birth</label>
+          <input
+            type="date"
+            id="dob"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <p id="dobError" class="text-red-500 text-xs hidden">
+            you must be at least 18 years old !
+          </p>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password" class="block font-medium">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <p id="passwordError" class="text-red-500 text-xs hidden">
+          must contain at least 8 characters, including uppercase, lowercase and
+          numbers!
+        </p>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirm " class="block font-medium"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            id="confirm"
+            placeholder="Confirm your password"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <p id="confirmError" class="text-red-500 text-xs hidden">
+          Password do not match!
+        </p>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+        >
+          Register
+        </button>
+      </form>
+
+      <p id="success-message" class="text-green-500 text-center mt-4 hidden">
+        Registration Successful!
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
